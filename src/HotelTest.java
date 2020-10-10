@@ -7,31 +7,31 @@ class HotelTest {
     @Test
     void orderKleineKamer() {
         Hotel hotel = new Hotel();
-        hotel.orderKleineKamer(2);
-        int aantalKleineKamers =  hotel.getAantalKleineKamers();
-        assertEquals(8,aantalKleineKamers);
+        hotel.orderKamer(2);
+        int aantalKleineKamers =  hotel.getAantalKamers();
+        assertEquals(48,aantalKleineKamers);
     }
 
     @Test
     void orderKleineKamerNegatiefAantalKamers() {
         Hotel hotel = new Hotel();
-        hotel.orderKleineKamer(-2);
-        int aantalKleineKamers =  hotel.getAantalKleineKamers();
-        assertEquals(10,aantalKleineKamers);
+        hotel.orderKamer(-2);
+        int aantalKleineKamers =  hotel.getAantalKamers();
+        assertEquals(50,aantalKleineKamers);
     }
 
     @Test
     void orderKleineKamerTeVeelAantalKamers() {
         Hotel hotel = new Hotel();
-        hotel.orderKleineKamer(12);
-        int aantalKleineKamers =  hotel.getAantalKleineKamers();
-        assertEquals(10,aantalKleineKamers);
+        hotel.orderKamer(12);
+        int aantalKleineKamers =  hotel.getAantalKamers();
+        assertEquals(38,aantalKleineKamers);
     }
 
     @Test
     void orderKleineKamerAantalPersonen() {
         Hotel hotel = new Hotel();
-        hotel.orderKleineKamer(2);
+        hotel.orderKamer(2);
         int aantalPersonenNogOver=  hotel.getAantalPersonen();
         assertEquals(96,aantalPersonenNogOver);
     }
@@ -39,7 +39,7 @@ class HotelTest {
     @Test
     void orderKleineKamerTeVeelAantalPersonen() {
         Hotel hotel = new Hotel();
-        hotel.orderKleineKamer(60);
+        hotel.orderKamer(60);
         int aantalPersonenNogOver=  hotel.getAantalPersonen();
         assertEquals(100,aantalPersonenNogOver);
     }
@@ -47,7 +47,7 @@ class HotelTest {
     @Test
     void orderPrijs() {
         Hotel hotel = new Hotel();
-        hotel.orderKleineKamer(2);
+        hotel.orderKamer(2);
         double prijs=  hotel.getPrijs();
         assertEquals(200,prijs);
     }
@@ -55,7 +55,7 @@ class HotelTest {
     @Test
     void orderLuxe() {
         Hotel hotel = new Hotel();
-        hotel.orderKleineKamer(2, "luxe");
+        hotel.orderKamer(2, "luxe");
         double prijs=  hotel.getPrijs();
         assertEquals(300,prijs);
     }
@@ -63,7 +63,7 @@ class HotelTest {
     @Test
     void orderLuxeFout() {
         Hotel hotel = new Hotel();
-        hotel.orderKleineKamer(2, "foute input");
+        hotel.orderKamer(2, "foute input");
         double prijs=  hotel.getPrijs();
         assertEquals(200,prijs);
     }
@@ -71,7 +71,7 @@ class HotelTest {
     @Test
     void orderMetPromotie() {
         Hotel hotel = new Hotel();
-        hotel.orderKleineKamer(2);
+        hotel.orderKamer(2);
         hotel.promotie(2);
         double prijs=  hotel.getPrijs();
         assertEquals(100,prijs);
@@ -80,7 +80,7 @@ class HotelTest {
     @Test
     void orderLuxeMetPromotie() {
         Hotel hotel = new Hotel();
-        hotel.orderKleineKamer(2, "luxe");
+        hotel.orderKamer(2, "luxe");
         hotel.promotie(2);
         double prijs=  hotel.getPrijs();
         assertEquals(150,prijs);

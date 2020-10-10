@@ -3,24 +3,21 @@ import java.util.Map;
 
 public class Hotel {
     private Map<Integer, Integer> personen = new HashMap<>();
-    int aantalEenPersoonsKamers = 10; //kleine kamers = 2 personen
-    int aantalKleineKamers = 10; //kleine kamers = 2 personen
-    int aantalGroteKamers = 10; //kleine kamers = 5 personen
-    int aantalFamilieKamers = 2; //kleine kamers = 10 personen
+    int aantalKamers = 50; //kleine kamers = 2 personen
     int aantalPersonen = 100;
     double prijs = 50;
     boolean luxes = false;
 
-    public void orderKleineKamer(int aantalKamersBesteld) {
-        if (aantalKamersBesteld < 0 || aantalKamersBesteld > aantalKleineKamers) return;
+    public void orderKamer(int aantalKamersBesteld) {
+        if (aantalKamersBesteld < 0 || aantalKamersBesteld > aantalKamers) return;
         prijs = aantalKamersBesteld * 2 * prijs;
-        aantalKleineKamers = aantalKleineKamers - aantalKamersBesteld;
+        aantalKamers = aantalKamers - aantalKamersBesteld;
         aantalPersonen = aantalPersonen - 2 * aantalKamersBesteld;
     }
 
-    public void orderKleineKamer(int aantalKamersBesteld, String luxe) {
-        if (aantalKamersBesteld < 0 || aantalKamersBesteld > aantalKleineKamers) return;
-        aantalKleineKamers = aantalKleineKamers - aantalKamersBesteld;
+    public void orderKamer(int aantalKamersBesteld, String luxe) {
+        if (aantalKamersBesteld < 0 || aantalKamersBesteld > aantalKamers) return;
+        aantalKamers = aantalKamers - aantalKamersBesteld;
         aantalPersonen = aantalPersonen - 2 * aantalKamersBesteld;
         if (luxe.equals("luxe")) luxes = true;
         if (luxes) {
@@ -34,8 +31,8 @@ public class Hotel {
         prijs = prijs * 0.5;
     }
 
-    public int getAantalKleineKamers() {
-        return aantalKleineKamers;
+    public int getAantalKamers() {
+        return aantalKamers;
     }
 
     public int getAantalPersonen() {
