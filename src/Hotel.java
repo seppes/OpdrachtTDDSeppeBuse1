@@ -35,6 +35,11 @@ public class Hotel {
         prijs = prijs + 20 * aantalKamersBesteld;
     }
 
+    public void taxiToAirportService(String tijdstipOphaling) {
+        if (tijdstipOphaling.equals("")) return;
+        prijs = prijs + 50;
+    }
+
     public int getAantalKamers() {
         return aantalKamers;
     }

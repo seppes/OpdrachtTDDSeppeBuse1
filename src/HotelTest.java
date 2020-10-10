@@ -124,4 +124,22 @@ class HotelTest {
         assertEquals(140,prijs);
     }
 
+    @Test
+    void orderMetTaxi() {
+        Hotel hotel = new Hotel();
+        hotel.orderKamer(2);
+        hotel.taxiToAirportService("09:30");
+        double prijs=  hotel.getPrijs();
+        assertEquals(250,prijs);
+    }
+
+    @Test
+    void orderMetTaxiGeenTijdstip() {
+        Hotel hotel = new Hotel();
+        hotel.orderKamer(2);
+        hotel.taxiToAirportService("");
+        double prijs=  hotel.getPrijs();
+        assertEquals(200,prijs);
+    }
+
 }
