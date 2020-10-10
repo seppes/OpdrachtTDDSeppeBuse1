@@ -48,8 +48,16 @@ class HotelTest {
     void orderPrijs() {
         Hotel hotel = new Hotel();
         hotel.orderKleineKamer(2);
-        double prijs=  hotel.getPrijsPerPersoon();
+        double prijs=  hotel.getPrijs();
         assertEquals(200,prijs);
+    }
+
+    @Test
+    void orderLuxe() {
+        Hotel hotel = new Hotel();
+        hotel.orderKleineKamer(2, "luxe");
+        double prijs=  hotel.getPrijs();
+        assertEquals(300,prijs);
     }
 
 }
