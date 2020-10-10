@@ -11,8 +11,7 @@ public class Hotel {
     boolean luxe = false;
 
     public void orderKleineKamer(int aantalKamersBesteld) {
-        if (aantalKamersBesteld < 0) return;
-        if (aantalKamersBesteld > aantalKleineKamers) return;
+        if (aantalKamersBesteld < 0 || aantalKamersBesteld > aantalKleineKamers) return;
         aantalKleineKamers = aantalKleineKamers - aantalKamersBesteld;
         aantalPersonen = aantalPersonen - 2 * aantalKamersBesteld;
 
