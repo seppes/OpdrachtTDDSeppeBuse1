@@ -195,4 +195,27 @@ class HotelTest {
         double prijs=  hotel.getPrijs();
         assertEquals(310,prijs);
     }
+
+    @Test
+    void orderKleineAirco() {
+        Hotel hotel = new Hotel();
+        hotel.orderKamer(2);
+        hotel.airco(2);
+        double prijs=  hotel.getPrijs();
+        assertEquals(220,prijs);
+    }
+
+    @Test
+    void orderLuxeMetPromotieEnOntbeidEnTaxiEnzwembadEnRoomServiceAirco() {
+        Hotel hotel = new Hotel();
+        hotel.orderKamer(2, "luxe");
+        hotel.promotie(2);
+        hotel.ontbeid(2);
+        hotel.taxiToAirportService("13:15");
+        hotel.zwembadToegang();
+        hotel.roomService(2);
+        hotel.airco(2);
+        double prijs=  hotel.getPrijs();
+        assertEquals(330,prijs);
+    }
 }

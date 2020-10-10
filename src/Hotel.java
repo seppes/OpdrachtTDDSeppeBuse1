@@ -48,6 +48,11 @@ public class Hotel {
         prijs = prijs + 20 * aantalKamersBesteld;
     }
 
+    public void airco(int aantalKamersBesteld) {
+        prijs = prijs + 10 * aantalKamersBesteld;
+    }
+
+
     public int getAantalKamers() {
         return aantalKamers;
     }
