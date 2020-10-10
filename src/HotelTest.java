@@ -13,6 +13,14 @@ class HotelTest {
     }
 
     @Test
+    void orderKleineKamerNegatiefAantalKamers() {
+        Hotel hotel = new Hotel();
+        hotel.orderKleineKamer(-2);
+        int aantalKleineKamers =  hotel.getAantalKleineKamers();
+        assertEquals(10,aantalKleineKamers);
+    }
+
+    @Test
     void orderKleineKamerAantalPersonen() {
         Hotel hotel = new Hotel();
         hotel.orderKleineKamer(2);
@@ -21,5 +29,6 @@ class HotelTest {
         int aantalPersonenNogOver=  hotel.getAantalPersonen();
         assertEquals(96,aantalPersonenNogOver);
     }
+
 
 }
