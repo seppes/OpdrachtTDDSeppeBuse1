@@ -12,6 +12,7 @@ public class Hotel {
 
     public void orderKleineKamer(int aantalKamersBesteld) {
         if (aantalKamersBesteld < 0) return;
+        if (aantalKamersBesteld > aantalKleineKamers) return;
         aantalKleineKamers = aantalKleineKamers - aantalKamersBesteld;
         aantalPersonen = aantalPersonen - 2 * aantalKamersBesteld;
 
