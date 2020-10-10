@@ -40,6 +40,10 @@ public class Hotel {
         prijs = prijs + 50;
     }
 
+    public void zwembadToegang(String aantalKamersBesteld) {
+        prijs = prijs + 30;
+    }
+
     public int getAantalKamers() {
         return aantalKamers;
     }
