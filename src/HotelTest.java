@@ -114,4 +114,14 @@ class HotelTest {
         assertEquals(240,prijs);
     }
 
+    @Test
+    void orderMetPromotieEnOntbeid() {
+        Hotel hotel = new Hotel();
+        hotel.orderKamer(2);
+        hotel.promotie(2);
+        hotel.ontbeid(2);
+        double prijs=  hotel.getPrijs();
+        assertEquals(140,prijs);
+    }
+
 }
