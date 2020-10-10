@@ -22,13 +22,16 @@ public class Hotel {
         if (aantalKamersBesteld < 0 || aantalKamersBesteld > aantalKleineKamers) return;
         aantalKleineKamers = aantalKleineKamers - aantalKamersBesteld;
         aantalPersonen = aantalPersonen - 2 * aantalKamersBesteld;
-
         if (luxe.equals("luxe")) luxes = true;
         if (luxes) {
             prijs = prijs * 1.5;
             prijs = aantalKamersBesteld * 2 * prijs;
         } else
             prijs = aantalKamersBesteld * 2 * prijs;
+    }
+
+    public void promotie(int aantalKamersBesteld) {
+        prijs = prijs * 0.5;
     }
 
     public int getAantalKleineKamers() {
