@@ -60,4 +60,12 @@ class HotelTest {
         assertEquals(300,prijs);
     }
 
+    @Test
+    void orderLuxeFout() {
+        Hotel hotel = new Hotel();
+        hotel.orderKleineKamer(2, "foute input");
+        double prijs=  hotel.getPrijs();
+        assertEquals(200,prijs);
+    }
+
 }
