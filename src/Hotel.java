@@ -31,6 +31,10 @@ public class Hotel {
         prijs = prijs * 0.5;
     }
 
+    public void ontbeid(int aantalKamersBesteld) {
+        prijs = prijs + 20;
+    }
+
     public int getAantalKamers() {
         return aantalKamers;
     }
