@@ -87,12 +87,31 @@ class HotelTest {
     }
 
     @Test
-    void orderLuxeMetOntbeid() {
+    void orderLuxeMetPromotieEnOntbeid() {
         Hotel hotel = new Hotel();
         hotel.orderKamer(2, "luxe");
         hotel.promotie(2);
         hotel.ontbeid(2);
         double prijs=  hotel.getPrijs();
-        assertEquals(170,prijs);
+        assertEquals(190,prijs);
     }
+
+    @Test
+    void orderLuxeMetOntbeid() {
+        Hotel hotel = new Hotel();
+        hotel.orderKamer(2, "luxe");
+        hotel.ontbeid(2);
+        double prijs=  hotel.getPrijs();
+        assertEquals(340,prijs);
+    }
+
+    @Test
+    void orderMetOntbeid() {
+        Hotel hotel = new Hotel();
+        hotel.orderKamer(2);
+        hotel.ontbeid(2);
+        double prijs=  hotel.getPrijs();
+        assertEquals(240,prijs);
+    }
+
 }
