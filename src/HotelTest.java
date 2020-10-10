@@ -44,5 +44,12 @@ class HotelTest {
         assertEquals(100,aantalPersonenNogOver);
     }
 
+    @Test
+    void orderPrijs() {
+        Hotel hotel = new Hotel();
+        hotel.orderKleineKamer(2);
+        double prijs=  hotel.getPrijsPerPersoon();
+        assertEquals(200,prijs);
+    }
 
 }

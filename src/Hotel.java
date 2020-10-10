@@ -8,13 +8,19 @@ public class Hotel {
     int aantalGroteKamers = 10; //kleine kamers = 5 personen
     int aantalFamilieKamers = 2; //kleine kamers = 10 personen
     int aantalPersonen = 100;
+    double prijsPerPersoon = 50;
     boolean luxe = false;
 
     public void orderKleineKamer(int aantalKamersBesteld) {
         if (aantalKamersBesteld < 0 || aantalKamersBesteld > aantalKleineKamers) return;
+        prijsPerPersoon = aantalKamersBesteld*2 * prijsPerPersoon;
         aantalKleineKamers = aantalKleineKamers - aantalKamersBesteld;
         aantalPersonen = aantalPersonen - 2 * aantalKamersBesteld;
 
+    }
+
+    public void luxe (){
+        luxe = true;
     }
 
     public int getAantalKleineKamers() {
@@ -23,5 +29,9 @@ public class Hotel {
 
     public int getAantalPersonen() {
         return aantalPersonen;
+    }
+
+    public double getPrijsPerPersoon() {
+        return prijsPerPersoon;
     }
 }
