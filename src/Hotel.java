@@ -7,6 +7,7 @@ public class Hotel {
     int aantalPersonen = 100;
     double prijs = 50;
     boolean luxes = false;
+    int aantalPersonenMogelijkInSpeeltuin = 20;
 
     public void orderKamer(int aantalKamersBesteld) {
         if (aantalKamersBesteld < 0 || aantalKamersBesteld > aantalKamers) return;
@@ -52,6 +53,10 @@ public class Hotel {
         prijs = prijs + 10 * aantalKamersBesteld;
     }
 
+    public void speeltuin(int aantalKinderenToevoegenInSpeeltuin) {
+        if (aantalKinderenToevoegenInSpeeltuin < 0 || aantalKinderenToevoegenInSpeeltuin > 20) return;
+        aantalPersonenMogelijkInSpeeltuin = aantalPersonenMogelijkInSpeeltuin - aantalKinderenToevoegenInSpeeltuin;
+    }
 
     public int getAantalKamers() {
         return aantalKamers;
@@ -63,5 +68,9 @@ public class Hotel {
 
     public double getPrijs() {
         return prijs;
+    }
+
+    public int getAantalPersonenMogelijkInSpeeltuin() {
+        return aantalPersonenMogelijkInSpeeltuin;
     }
 }
