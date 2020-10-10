@@ -40,7 +40,7 @@ public class Hotel {
         prijs = prijs + 50;
     }
 
-    public void zwembadToegang(String aantalKamersBesteld) {
+    public void zwembadToegang() {
         prijs = prijs + 30;
     }
 
