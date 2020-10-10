@@ -16,14 +16,13 @@ public class Hotel {
         prijs = aantalKamersBesteld * 2 * prijs;
         aantalKleineKamers = aantalKleineKamers - aantalKamersBesteld;
         aantalPersonen = aantalPersonen - 2 * aantalKamersBesteld;
-
     }
 
     public void orderKleineKamer(int aantalKamersBesteld, String luxe) {
         if (aantalKamersBesteld < 0 || aantalKamersBesteld > aantalKleineKamers) return;
-//        prijsPerPersoon = aantalKamersBesteld * 2 * prijsPerPersoon;
         aantalKleineKamers = aantalKleineKamers - aantalKamersBesteld;
         aantalPersonen = aantalPersonen - 2 * aantalKamersBesteld;
+
         if (luxe.equals("luxe")) luxes = true;
         if (luxes) {
             prijs = prijs * 1.5;
