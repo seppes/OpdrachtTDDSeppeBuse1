@@ -45,7 +45,7 @@ public class Hotel {
     }
 
     public void roomService(int aantalKamersBesteld) {
-        prijs = prijs + 30;
+        prijs = prijs + 20 * aantalKamersBesteld;
     }
 
     public int getAantalKamers() {

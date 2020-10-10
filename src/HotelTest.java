@@ -174,5 +174,25 @@ class HotelTest {
         assertEquals(270,prijs);
     }
 
+    @Test
+    void orderKleineKamerRoomService() {
+        Hotel hotel = new Hotel();
+        hotel.orderKamer(2);
+        hotel.roomService(2);
+        double prijs=  hotel.getPrijs();
+        assertEquals(240,prijs);
+    }
 
+    @Test
+    void orderLuxeMetPromotieEnOntbeidEnTaxiEnzwembadEnRoomService() {
+        Hotel hotel = new Hotel();
+        hotel.orderKamer(2, "luxe");
+        hotel.promotie(2);
+        hotel.ontbeid(2);
+        hotel.taxiToAirportService("13:15");
+        hotel.zwembadToegang();
+        hotel.roomService(2);
+        double prijs=  hotel.getPrijs();
+        assertEquals(310,prijs);
+    }
 }
