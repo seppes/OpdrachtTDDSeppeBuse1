@@ -173,4 +173,6 @@ class HotelTest {
         double prijs=  hotel.getPrijs();
         assertEquals(270,prijs);
     }
+
+
 }

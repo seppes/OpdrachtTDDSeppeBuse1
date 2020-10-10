@@ -44,6 +44,10 @@ public class Hotel {
         prijs = prijs + 30;
     }
 
+    public void roomService(int aantalKamersBesteld) {
+        prijs = prijs + 30;
+    }
+
     public int getAantalKamers() {
         return aantalKamers;
     }
