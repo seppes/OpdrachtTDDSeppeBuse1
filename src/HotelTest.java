@@ -28,13 +28,6 @@ class HotelTest {
         assertEquals(38, aantalKleineKamers);
     }
 
-    @Test
-    void orderKleineKamerAantalPersonen() {
-        Hotel hotel = new Hotel();
-        hotel.orderKamer(2);
-        int aantalPersonenNogOver = hotel.getAantalPersonen();
-        assertEquals(96, aantalPersonenNogOver);
-    }
 
     @Test
     void orderKleineKamerTeVeelAantalPersonen() {
@@ -48,52 +41,60 @@ class HotelTest {
     void orderPrijs() {
         Hotel hotel = new Hotel();
         hotel.orderKamer(2);
-        double prijs = hotel.getPrijs();
-        assertEquals(200, prijs);
+        double eindPrijs = hotel.getEindPrijs();
+        assertEquals(100, eindPrijs);
+    }
+
+    @Test
+    void orderLuxeEnGewoneKamer() {
+        Hotel hotel = new Hotel();
+        hotel.orderKamer(2);
+        hotel.orderKamer(2, "luxe");
+        double eindPrijs = hotel.getEindPrijs();
+        assertEquals(250, eindPrijs);
     }
 
     @Test
     void orderLuxe() {
         Hotel hotel = new Hotel();
         hotel.orderKamer(2, "luxe");
-        double prijs = hotel.getPrijs();
-        assertEquals(300, prijs);
+        double eindPrijs = hotel.getEindPrijs();
+        assertEquals(150, eindPrijs);
+    }
+
+    @Test
+    void orderTweeKeerLuxe() {
+        Hotel hotel = new Hotel();
+        hotel.orderKamer(2, "luxe");
+        hotel.orderKamer(2, "luxe");
+        double eindPrijs = hotel.getEindPrijs();
+        assertEquals(300, eindPrijs);
     }
 
     @Test
     void orderLuxeFout() {
         Hotel hotel = new Hotel();
         hotel.orderKamer(2, "foute input");
-        double prijs = hotel.getPrijs();
-        assertEquals(200, prijs);
+        double eindPrijs = hotel.getEindPrijs();
+        assertEquals(100, eindPrijs);
     }
 
     @Test
     void orderMetPromotie() {
         Hotel hotel = new Hotel();
         hotel.orderKamer(2);
-        hotel.promotie(2);
-        double prijs = hotel.getPrijs();
-        assertEquals(100, prijs);
+        hotel.promotie();
+        double eindPrijs = hotel.getEindPrijs();
+        assertEquals(50, eindPrijs);
     }
 
     @Test
     void orderLuxeMetPromotie() {
         Hotel hotel = new Hotel();
         hotel.orderKamer(2, "luxe");
-        hotel.promotie(2);
-        double prijs = hotel.getPrijs();
-        assertEquals(150, prijs);
-    }
-
-    @Test
-    void orderLuxeMetPromotieEnOntbeid() {
-        Hotel hotel = new Hotel();
-        hotel.orderKamer(2, "luxe");
-        hotel.promotie(2);
-        hotel.ontbeid(2);
-        double prijs = hotel.getPrijs();
-        assertEquals(190, prijs);
+        hotel.promotie();
+        double eindPrijs = hotel.getEindPrijs();
+        assertEquals(75, eindPrijs);
     }
 
     @Test
@@ -101,8 +102,8 @@ class HotelTest {
         Hotel hotel = new Hotel();
         hotel.orderKamer(2, "luxe");
         hotel.ontbeid(2);
-        double prijs = hotel.getPrijs();
-        assertEquals(340, prijs);
+        double eindPrijs = hotel.getEindPrijs();
+        assertEquals(190, eindPrijs);
     }
 
     @Test
@@ -110,27 +111,18 @@ class HotelTest {
         Hotel hotel = new Hotel();
         hotel.orderKamer(2);
         hotel.ontbeid(2);
-        double prijs = hotel.getPrijs();
-        assertEquals(240, prijs);
+        double eindPrijs = hotel.getEindPrijs();
+        assertEquals(140, eindPrijs);
     }
 
-    @Test
-    void orderMetPromotieEnOntbeid() {
-        Hotel hotel = new Hotel();
-        hotel.orderKamer(2);
-        hotel.promotie(2);
-        hotel.ontbeid(2);
-        double prijs = hotel.getPrijs();
-        assertEquals(140, prijs);
-    }
 
     @Test
     void orderMetTaxi() {
         Hotel hotel = new Hotel();
         hotel.orderKamer(2);
         hotel.taxiToAirportService("09:30");
-        double prijs = hotel.getPrijs();
-        assertEquals(250, prijs);
+        double eindPrijs = hotel.getEindPrijs();
+        assertEquals(150, eindPrijs);
     }
 
     @Test
@@ -138,62 +130,28 @@ class HotelTest {
         Hotel hotel = new Hotel();
         hotel.orderKamer(2);
         hotel.taxiToAirportService("");
-        double prijs = hotel.getPrijs();
-        assertEquals(200, prijs);
+        double eindPrijs = hotel.getEindPrijs();
+        assertEquals(100, eindPrijs);
     }
 
-    @Test
-    void orderLuxeMetPromotieEnOntbeidEnTaxi() {
-        Hotel hotel = new Hotel();
-        hotel.orderKamer(2, "luxe");
-        hotel.promotie(2);
-        hotel.ontbeid(2);
-        hotel.taxiToAirportService("13:15");
-        double prijs = hotel.getPrijs();
-        assertEquals(240, prijs);
-    }
 
     @Test
     void orderKleineKamerMetToegangZwembad() {
         Hotel hotel = new Hotel();
         hotel.orderKamer(2);
         hotel.zwembadToegang();
-        double prijs = hotel.getPrijs();
-        assertEquals(230, prijs);
+        double eindPrijs = hotel.getEindPrijs();
+        assertEquals(130, eindPrijs);
     }
 
-    @Test
-    void orderLuxeMetPromotieEnOntbeidEnTaxiEnzwembad() {
-        Hotel hotel = new Hotel();
-        hotel.orderKamer(2, "luxe");
-        hotel.promotie(2);
-        hotel.ontbeid(2);
-        hotel.taxiToAirportService("13:15");
-        hotel.zwembadToegang();
-        double prijs = hotel.getPrijs();
-        assertEquals(270, prijs);
-    }
 
     @Test
     void orderKleineKamerRoomService() {
         Hotel hotel = new Hotel();
         hotel.orderKamer(2);
         hotel.roomService(2);
-        double prijs = hotel.getPrijs();
-        assertEquals(240, prijs);
-    }
-
-    @Test
-    void orderLuxeMetPromotieEnOntbeidEnTaxiEnzwembadEnRoomService() {
-        Hotel hotel = new Hotel();
-        hotel.orderKamer(2, "luxe");
-        hotel.promotie(2);
-        hotel.ontbeid(2);
-        hotel.taxiToAirportService("13:15");
-        hotel.zwembadToegang();
-        hotel.roomService(2);
-        double prijs = hotel.getPrijs();
-        assertEquals(310, prijs);
+        double eindPrijs = hotel.getEindPrijs();
+        assertEquals(140, eindPrijs);
     }
 
     @Test
@@ -201,23 +159,10 @@ class HotelTest {
         Hotel hotel = new Hotel();
         hotel.orderKamer(2);
         hotel.airco(2);
-        double prijs = hotel.getPrijs();
-        assertEquals(220, prijs);
+        double eindPrijs = hotel.getEindPrijs();
+        assertEquals(120, eindPrijs);
     }
 
-    @Test
-    void orderLuxeMetPromotieEnOntbeidEnTaxiEnzwembadEnRoomServiceAirco() {
-        Hotel hotel = new Hotel();
-        hotel.orderKamer(2, "luxe");
-        hotel.promotie(2);
-        hotel.ontbeid(2);
-        hotel.taxiToAirportService("13:15");
-        hotel.zwembadToegang();
-        hotel.roomService(2);
-        hotel.airco(2);
-        double prijs = hotel.getPrijs();
-        assertEquals(330, prijs);
-    }
 
     @Test
     void orderSpeeltuinPlaats() {
@@ -243,18 +188,4 @@ class HotelTest {
         assertEquals(20, aantalKinderenInSpeeltuin);
     }
 
-    @Test
-    void orderLuxeMetPromotieEnOntbeidEnTaxiEnzwembadEnRoomServiceAircoEnSpeeltuin() {
-        Hotel hotel = new Hotel();
-        hotel.orderKamer(2, "luxe");
-        hotel.promotie(2);
-        hotel.ontbeid(2);
-        hotel.taxiToAirportService("13:15");
-        hotel.zwembadToegang();
-        hotel.roomService(2);
-        hotel.airco(2);
-        hotel.speeltuin(2);
-        double prijs = hotel.getPrijs();
-        assertEquals(330, prijs);
-    }
 }

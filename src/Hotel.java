@@ -1,56 +1,76 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 public class Hotel {
-    private Map<Integer, Integer> personen = new HashMap<>();
     int aantalKamers = 50; //kleine kamers = 2 personen
     int aantalPersonen = 100;
     double prijs = 50;
+    boolean promotie = false;
     boolean luxes = false;
     int aantalPersonenMogelijkInSpeeltuin = 20;
+    ArrayList<Double> prijsLijst = new ArrayList<>();
+    Double eindPrijs = 0.0;
 
     public void orderKamer(int aantalKamersBesteld) {
         if (aantalKamersBesteld < 0 || aantalKamersBesteld > aantalKamers) return;
-        prijs = aantalKamersBesteld * 2 * prijs;
+        prijs = aantalKamersBesteld * prijs;
         aantalKamers = aantalKamers - aantalKamersBesteld;
         aantalPersonen = aantalPersonen - 2 * aantalKamersBesteld;
+        prijsLijst.add(prijs);
+        prijs = 50;
     }
 
-    public void orderKamer(int aantalKamersBesteld, String luxe) {
+    public void orderKamer(int aantalKamersBesteld, String extra) {
         if (aantalKamersBesteld < 0 || aantalKamersBesteld > aantalKamers) return;
         aantalKamers = aantalKamers - aantalKamersBesteld;
         aantalPersonen = aantalPersonen - 2 * aantalKamersBesteld;
-        if (luxe.equals("luxe")) luxes = true;
+
+        if (extra.equals("luxe")) {luxes = true;}
         if (luxes) {
             prijs = prijs * 1.5;
-            prijs = aantalKamersBesteld * 2 * prijs;
-        } else
-            prijs = aantalKamersBesteld * 2 * prijs;
+            prijs = aantalKamersBesteld * prijs;
+        } else {
+            prijs = aantalKamersBesteld * prijs;
+        }
+        prijsLijst.add(prijs);
+        prijs = 50;
     }
 
-    public void promotie(int aantalKamersBesteld) {
-        prijs = prijs * 0.5;
+
+    public Double getEindPrijs() {
+        for (int i = 0; i < prijsLijst.size(); i++) {
+            eindPrijs = eindPrijs + this.prijsLijst.get(i);
+        }
+        if (promotie){
+            promotie =false;
+            return eindPrijs/2;
+        }else{
+            return eindPrijs;
+        }
+    }
+
+    public void promotie() {
+        promotie =true;
     }
 
     public void ontbeid(int aantalKamersBesteld) {
-        prijs = prijs + 20 * aantalKamersBesteld;
+        eindPrijs = eindPrijs + 20 * aantalKamersBesteld;
     }
 
     public void taxiToAirportService(String tijdstipOphaling) {
         if (tijdstipOphaling.equals("")) return;
-        prijs = prijs + 50;
+        eindPrijs = eindPrijs + 50;
     }
 
     public void zwembadToegang() {
-        prijs = prijs + 30;
+        eindPrijs = eindPrijs + 30;
     }
 
     public void roomService(int aantalKamersBesteld) {
-        prijs = prijs + 20 * aantalKamersBesteld;
+        eindPrijs = eindPrijs + 20 * aantalKamersBesteld;
     }
 
     public void airco(int aantalKamersBesteld) {
-        prijs = prijs + 10 * aantalKamersBesteld;
+        eindPrijs = eindPrijs + 10 * aantalKamersBesteld;
     }
 
     public void speeltuin(int aantalKinderenToevoegenInSpeeltuin) {
